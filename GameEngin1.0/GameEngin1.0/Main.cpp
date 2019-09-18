@@ -8,8 +8,27 @@ int main()
 
 	window.setKeyRepeatEnabled(false);
 
+	//var
 	bool play = true;
 	sf::Event event;
+	bool leftClick = false;
+	int mouseX = 0, mouseY = 0;
+	int rectXPosition = 0;
+
+	//Render shapes
+
+	sf::RectangleShape rect;
+	rect.setSize(sf::Vector2f(100,100));
+	rect.setPosition(350, 250);
+	rect.setFillColor(sf::Color::Blue);
+
+
+	sf::CircleShape circle;
+	circle.setRadius(50);
+	circle.setPosition(350, 250);
+	circle.setFillColor(sf::Color::Yellow);
+
+
 	//Game Loop
 	while (play)
 	{
@@ -26,13 +45,40 @@ int main()
 			{
 				play = false;
 			}
+
+			if (event.type == sf::Event::MouseButtonPressed &&
+				event.mouseButton.button == sf::Mouse::Left) 
+			{
+				leftClick = true;
+			}
+
+
+			if (event.type == sf::Event::MouseMoved)
+			{
+				mouseY = event.mouseMove.y;
+				mouseX = event.mouseMove.x;
+			}
+
+
 		}
 
+
 		//LOGIC
+		if (leftClick)
+		{
+			std::cout << "Left Click Pressed" << std::endl;
+			leftClick = false;
+		}
+		
+		std::cout << "X: " << mouseX  << "Y: " << mouseY << std::endl;
+		rectXPosition++;
+		rect.setPosition(rectXPosition,rectXPosition);
 
 		//RENDERING
 		window.clear();
 
+		window.draw(rect);
+		window.draw(circle);
 
 		window.display();
 	}

@@ -1,2 +1,3 @@
 ﻿  Main.cpp
+c:\users\n\documents\gameengine\gameengin1.0\gameengin1.0\main.cpp(75): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   GameEngin1.0.vcxproj -> C:\Users\N\Documents\GameEngine\GameEngin1.0\x64\Debug\GameEngin1.0.exe
